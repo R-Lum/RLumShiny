@@ -179,23 +179,36 @@ function(input, output, session) {
     values$results[[input$positions]] <- results$data
   })
 
-  output$results <- DT::renderDT({
+  getResultsTable <- function(onlyHighlights = FALSE) {
     data <- as.data.frame(data.table::rbindlist(values$results))
 
     ## remove internal columns
     rm.idx <- grep("^\\.", colnames(data))
     data <- data[, -rm.idx]
 
-    ## remove columns for secondary model parameters
-    rm.idx <- match(c("D01", "D01.ERROR", "D02", "D02.ERROR", "R", "R.ERROR",
-                      "Dc", "D63"), colnames(data))
-    data <- data[, -rm.idx]
+    if (onlyHighlights) {
+      ## remove columns for secondary model parameters
+      rm.idx <- match(c("D01", "D01.ERROR", "D02", "D02.ERROR", "R", "R.ERROR",
+                        "Dc", "D63", "HPDI68_L", "HPDI68_U", "HPDI95_L", "HPDI95_U",
+                        "signal.range", "background.range",
+                        "signal.range.Tx", "background.range.Tx", "UID"),
+                      colnames(data))
+      data <- data[, -rm.idx]
+    }
 
     ## round numerical columns
     num.idx <- sapply(data, is.numeric)
     data[num.idx] <- lapply(data[num.idx], round, digits = 3)
 
     data
+  }
+
+  output$results <- DT::renderDT({
+    getResultsTable()
+  }, options = list(pageLength = 10))
+
+  output$highlights <- DT::renderDT({
+    getResultsTable(onlyHighlights = TRUE)
   }, options = list(pageLength = 10))
 
   observe({

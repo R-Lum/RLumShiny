@@ -144,6 +144,7 @@ function(request) {
                   tabsetPanel(
                     tabPanel("Plot", plotOutput(outputId = "main_plot", height = "600px")),
                     tabPanel("Results", DT::DTOutput("results")),
+                    tabPanel("Highlights", DT::DTOutput("highlights")),
                     tabPanel("R code", verbatimTextOutput("plotCode"))
                   )
                 )

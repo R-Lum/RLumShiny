@@ -33,7 +33,7 @@ output: github_document
 * App `radialplot`:
   + Show the ui elements regarding the secondary dataset only when the
     corresponding data is present.
-    
+
 * App `RCarb`:
   + Add support to run selected records only. This way single records can be
     tested without modifying the table, i.e. deleting rows, which was the only 
@@ -55,7 +55,9 @@ output: github_document
   + Add support for choosing the fit mode (interpolation or extrapolation) and
     fit method (`EXP`, `LIN`, `QDR`, `GOK`, `OTOR`, etc) for the dose response
     curve.
-  + Report the results obtained for each position selected in the Results tab.
+  + Add button to analyze all curves.
+  + Report the results obtained for each position selected in the Results and
+    Highlights tabs.
 
 ## RLumShiny 0.2.7 (Release date: 2026-01-18)
 

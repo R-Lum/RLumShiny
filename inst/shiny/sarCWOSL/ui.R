@@ -28,7 +28,10 @@ function(request) {
                                        ),
 
                                        div(align = "center", h5("(De)select individual curves")),
-                                       uiOutput("curves")
+                                       uiOutput("curves"),
+
+                                       div(align = "center", h5("Batch processing")),
+                                       actionButton("analyze_all", "Analyze all")
                                    )
                                }),
 
@@ -144,6 +147,7 @@ function(request) {
                   tabsetPanel(
                     tabPanel("Plot", plotOutput(outputId = "main_plot", height = "600px")),
                     tabPanel("Results", DT::DTOutput("results")),
+                    tabPanel("Highlights", DT::DTOutput("highlights")),
                     tabPanel("R code", verbatimTextOutput("plotCode"))
                   )
                 )

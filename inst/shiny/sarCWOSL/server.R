@@ -170,6 +170,24 @@ function(input, output, session) {
                        inline = TRUE)
   })
 
+  observeEvent(input$analyze_all, {
+    req(input$positions)
+    set.seed(1)
+    obj <- values$args$object
+    values$args$object <- values$data_primary
+    values$args$plot <- FALSE
+    results <- RLumShiny:::tryNotify(do.call(analyse_SAR.CWOSL, values$args))
+
+    ## store the results obtained for each position
+    for (pos in results$data$POS) {
+      values$results[[pos]] <- results$data[results$data$POS == pos, ]
+    }
+
+    ## restore arguments
+    values$args$object <- obj
+    values$args$plot <- TRUE
+  })
+
   output$main_plot <- renderPlot({
     req(input$positions)
     set.seed(1)
@@ -179,23 +197,36 @@ function(input, output, session) {
     values$results[[input$positions]] <- results$data
   })
 
-  output$results <- DT::renderDT({
+  getResultsTable <- function(onlyHighlights = FALSE) {
     data <- as.data.frame(data.table::rbindlist(values$results))
 
     ## remove internal columns
     rm.idx <- grep("^\\.", colnames(data))
     data <- data[, -rm.idx]
 
-    ## remove columns for secondary model parameters
-    rm.idx <- match(c("D01", "D01.ERROR", "D02", "D02.ERROR", "R", "R.ERROR",
-                      "Dc", "D63"), colnames(data))
-    data <- data[, -rm.idx]
+    if (onlyHighlights) {
+      ## remove columns for secondary model parameters
+      rm.idx <- match(c("D01", "D01.ERROR", "D02", "D02.ERROR", "R", "R.ERROR",
+                        "Dc", "D63", "HPDI68_L", "HPDI68_U", "HPDI95_L", "HPDI95_U",
+                        "signal.range", "background.range",
+                        "signal.range.Tx", "background.range.Tx", "UID"),
+                      colnames(data))
+      data <- data[, -rm.idx]
+    }
 
     ## round numerical columns
     num.idx <- sapply(data, is.numeric)
     data[num.idx] <- lapply(data[num.idx], round, digits = 3)
 
     data
+  }
+
+  output$results <- DT::renderDT({
+    getResultsTable()
+  }, options = list(pageLength = 10))
+
+  output$highlights <- DT::renderDT({
+    getResultsTable(onlyHighlights = TRUE)
   }, options = list(pageLength = 10))
 
   observe({

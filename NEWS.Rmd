@@ -55,6 +55,7 @@ output: github_document
   + Add support for choosing the fit mode (interpolation or extrapolation) and
     fit method (`EXP`, `LIN`, `QDR`, `GOK`, `OTOR`, etc) for the dose response
     curve.
+  + Add button to analyze all curves.
   + Report the results obtained for each position selected in the Results and
     Highlights tabs.
 

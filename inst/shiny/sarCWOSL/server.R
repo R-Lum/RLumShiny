@@ -170,6 +170,24 @@ function(input, output, session) {
                        inline = TRUE)
   })
 
+  observeEvent(input$analyze_all, {
+    req(input$positions)
+    set.seed(1)
+    obj <- values$args$object
+    values$args$object <- values$data_primary
+    values$args$plot <- FALSE
+    results <- RLumShiny:::tryNotify(do.call(analyse_SAR.CWOSL, values$args))
+
+    ## store the results obtained for each position
+    for (pos in results$data$POS) {
+      values$results[[pos]] <- results$data[results$data$POS == pos, ]
+    }
+
+    ## restore arguments
+    values$args$object <- obj
+    values$args$plot <- TRUE
+  })
+
   output$main_plot <- renderPlot({
     req(input$positions)
     set.seed(1)

@@ -28,7 +28,10 @@ function(request) {
                                        ),
 
                                        div(align = "center", h5("(De)select individual curves")),
-                                       uiOutput("curves")
+                                       uiOutput("curves"),
+
+                                       div(align = "center", h5("Batch processing")),
+                                       actionButton("analyze_all", "Analyze all")
                                    )
                                }),
 

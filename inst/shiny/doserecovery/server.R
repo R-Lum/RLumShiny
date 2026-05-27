@@ -137,11 +137,7 @@ function(input, output, session) {
     # if custom datapoint style get char from separate input panel
     pch <- ifelse(input$pch == "custom", input$custompch, as.integer(input$pch))
     pch2 <- ifelse(input$pch2 == "custom", input$custompch2, as.integer(input$pch2))
-
-    # if custom datapoint color get RGB code from separate input panel
     color <- ifelse(input$color == "custom", input$rgb, color<- input$color)
-
-    # if custom datapoint color get RGB code from separate input panel
     if(length(values$data) > 1) {
       color2 <- ifelse(input$color2 == "custom", input$rgb2, input$color2)
     } else {

@@ -63,15 +63,24 @@ function(request) {
                                         textInput(inputId = "main",
                                                   label = "Title",
                                                   value = "Dose Response Curve"),
-                                        checkboxInput(inputId = "extended",
-                                                      label = "Histogram and sensitivity plot",
-                                                      value = TRUE),
-                                        checkboxInput(inputId = "density_rug",
-                                                      label = "Density rug",
-                                                      value = TRUE),
-                                        checkboxInput(inputId = "box",
-                                                      label = "Box",
-                                                      value = TRUE),
+                                        fluidRow(
+                                            column(width = 6,
+                                                   checkboxInput(inputId = "extended",
+                                                                 label = "Histogram and sensitivity plot",
+                                                                 value = TRUE),
+                                                   checkboxInput(inputId = "box",
+                                                                 label = "Outer box",
+                                                                 value = TRUE)
+                                                   ),
+                                            column(width = 6,
+                                                   checkboxInput(inputId = "density_polygon",
+                                                                 label = "Density polygon",
+                                                                 value = TRUE),
+                                                   checkboxInput(inputId = "density_rug",
+                                                                 label = "Density rug",
+                                                                 value = TRUE)
+                                                   )
+                                        ),
 
                                         br(),
                                         div(align = "center", h5("Axes")),

@@ -51,6 +51,7 @@ function(input, output, session) {
       object = NULL, # will be set further down
       plot_extended = input$extended,
       density_rug = input$density_rug,
+      density_polygon = input$density_polygon,
       box = input$box,
       legend = input$showlegend,
       legend.pos = input$legend_pos,

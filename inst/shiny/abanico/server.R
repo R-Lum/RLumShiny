@@ -315,7 +315,7 @@ function(input, output, session) {
     centrality <- ifelse(input$centrality == "custom", input$centralityNumeric, input$centrality)
 
     # check whether predefined or custom dispersion
-    dispersion<- ifelse(input$dispersion == "custom", paste("p", input$cinn, sep=""), input$dispersion)
+    dispersion <- ifelse(input$dispersion == "custom", sprintf("p%02d", input$cinn), input$dispersion)
 
     # save all arguments in a list
     values$args<- list(data = values$data,

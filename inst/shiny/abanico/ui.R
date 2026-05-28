@@ -173,13 +173,15 @@ function(request) {
                                                              "Custom percentile range" = "custom")),
                                             title = "Measure of dispersion, used for drawing the polygon that depicts the spread in the dose distribution."),
 
-                                        conditionalPanel(condition = "input.dispersion == 'custom'",
-                                                         numericInput(inputId = "cinn",
-                                                                      label = "x % percentile",
-                                                                      value = 25,
-                                                                      min = 0,
-                                                                      max = 100,
-                                                                      step = 1)),
+                                        div(align = "left",
+                                            conditionalPanel(condition = "input.dispersion == 'custom'",
+                                                             sliderInput(inputId = "cinn",
+                                                                         label = "Lower percentile [%]",
+                                                                         value = 25,
+                                                                         min = 0,
+                                                                         max = 50,
+                                                                         step = 1)),
+                                            title = "Symmetric percentile range with e.g. `5` indicating the range between 5 and 95 %"),
 
                                         div(align = "center", HTML("<h5>2&sigma; bar</h5>")),
 

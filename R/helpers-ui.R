@@ -30,6 +30,32 @@ pointSymbolChooser <- function(inputId, selected, label = "Style") {
                           "Custom"="custom"))
 }
 
+#' Internal helper function to choose the line type
+#'
+#' @noRd
+lineTypeChooser <- function(inputId, selected, label = "Line type") {
+  selectInput(inputId = inputId,
+              label = label,
+              selected = selected,
+              choices = list("Blank" = 0,
+                             "Solid" = 1,
+                             "Dashed" = 2,
+                             "Dotted" = 3,
+                             "Dot dash" = 4,
+                             "Long dash" = 5,
+                             "Two dash" = 6))
+}
+
+#' Internal helper function to choose the line width
+#'
+#' @noRd
+lineWidthChooser <- function(inputId, label = "Line width") {
+  numericInput(inputId = inputId,
+               label = label,
+               value = 1,
+               min = 0, max = 5, step = 0.5)
+}
+
 #' Internal helper function to choose a custom symbol
 #'
 #' @noRd

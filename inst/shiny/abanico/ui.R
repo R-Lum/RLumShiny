@@ -220,43 +220,22 @@ function(request) {
 
                                         fluidRow(
                                           column(width = 6,
-                                                 numericInput(inputId = "lwd",
-                                                              label = "Line width #1",
-                                                              min = 0, max = 5,
-                                                              value = 1)
+                                                 RLumShiny:::lineWidthChooser(inputId = "lwd",
+                                                                              label = "Line width #1")
                                           ),
                                           column(width = 6,
-                                                 numericInput(inputId = "lwd2",
-                                                              label = "Line width #2",
-                                                              min = 0, max = 5,
-                                                              value = 1)
+                                                 RLumShiny:::lineWidthChooser(inputId = "lwd2",
+                                                                              label = "Line width #2")
                                           )
                                         ),
                                         fluidRow(
                                           column(width = 6,
-                                                 selectInput(inputId = "lty",
-                                                             label = "Line type",
-                                                             selected = 2,
-                                                             choices = list("Blank" = 0,
-                                                                            "Solid" = 1,
-                                                                            "Dashed" = 2,
-                                                                            "Dotted" = 3,
-                                                                            "Dot dash" = 4,
-                                                                            "Long dash" = 5,
-                                                                            "Two dash" = 6))
+                                                 RLumShiny:::lineTypeChooser(inputId = "lty",
+                                                                             selected = 2)
                                           ),
                                           column(width = 6,
-                                                 selectInput(inputId = "lty2",
-                                                             label = "Line type",
-                                                             selected = 2,
-                                                             choices = list("Blank" = 0,
-                                                                            "Solid" = 1,
-                                                                            "Dashed" = 2,
-                                                                            "Dotted" = 3,
-                                                                            "Dot dash" = 4,
-                                                                            "Long dash" = 5,
-                                                                            "Two dash" = 6))
-
+                                                 RLumShiny:::lineTypeChooser(inputId = "lty2",
+                                                                             selected = 2)
                                           )
                                         ),
                                         div(align = "center", h5("Further options")),
@@ -425,16 +404,8 @@ function(request) {
                                                  title = "Numeric values of the additional lines to be added."
                                           ),
                                           column(width = 6,
-                                                 selectInput(inputId = "linelty1",
-                                                             label = "Line type",
-                                                             selected = 1,
-                                                             choices = list("Blank" = 0,
-                                                                            "Solid" = 1,
-                                                                            "Dashed" = 2,
-                                                                            "Dotted" = 3,
-                                                                            "Dot dash" = 4,
-                                                                            "Long dash" = 5,
-                                                                            "Two dash" = 6))
+                                                 RLumShiny:::lineTypeChooser(inputId = "linelty1",
+                                                                             selected = 1)
                                           )
                                         ),
                                         fluidRow(
@@ -453,14 +424,9 @@ function(request) {
                                         conditionalPanel(condition = "input.line1 > 0",
                                                          fluidRow(
                                                            column(width = 6, numericInput(inputId = "line2", strong("Line #2"), NA, min = 0)),
-                                                           column(width = 6, selectInput(inputId = "linelty2", label = "Line type",selected = 1,
-                                                                                         choices = list("Blank" = 0,
-                                                                                                        "Solid" = 1,
-                                                                                                        "Dashed" = 2,
-                                                                                                        "Dotted" = 3,
-                                                                                                        "Dot dash" = 4,
-                                                                                                        "Long dash" = 5,
-                                                                                                        "Two dash" = 6)))
+                                                           column(width = 6,
+                                                                  RLumShiny:::lineTypeChooser(inputId = "linelty2",
+                                                                                              selected = 1))
                                                          ),
                                                          fluidRow(
                                                            column(width = 6, HTML("Choose a color<br>"),jscolorInput(inputId = "colline2")),
@@ -470,14 +436,9 @@ function(request) {
                                         conditionalPanel(condition = "input.line2 > 0",
                                                          fluidRow(
                                                            column(width = 6, numericInput(inputId = "line3", strong("Line #3"), NA, min = 0)),
-                                                           column(width = 6, selectInput(inputId = "linelty3", label = "Line type",selected = 1,
-                                                                                         choices = list("Blank" = 0,
-                                                                                                        "Solid" = 1,
-                                                                                                        "Dashed" = 2,
-                                                                                                        "Dotted" = 3,
-                                                                                                        "Dot dash" = 4,
-                                                                                                        "Long dash" = 5,
-                                                                                                        "Two dash" = 6)))
+                                                           column(width = 6,
+                                                                  RLumShiny:::lineTypeChooser(inputId = "linelty3",
+                                                                                              selected = 1))
                                                          ),
                                                          fluidRow(
                                                            column(width = 6, HTML("Choose a color<br>"),jscolorInput(inputId = "colline3")),
@@ -487,14 +448,9 @@ function(request) {
                                         conditionalPanel(condition = "input.line3 > 0",
                                                          fluidRow(
                                                            column(width = 6, numericInput(inputId = "line4", strong("Line #4"), NA, min = 0)),
-                                                           column(width = 6, selectInput(inputId = "linelty4", label = "Line type",selected = 1,
-                                                                                         choices = list("Blank" = 0,
-                                                                                                        "Solid" = 1,
-                                                                                                        "Dashed" = 2,
-                                                                                                        "Dotted" = 3,
-                                                                                                        "Dot dash" = 4,
-                                                                                                        "Long dash" = 5,
-                                                                                                        "Two dash" = 6)))
+                                                           column(width = 6,
+                                                                  RLumShiny:::lineTypeChooser(inputId = "linelty4",
+                                                                                              selected = 1))
                                                          ),
                                                          fluidRow(
                                                            column(width = 6, HTML("Choose a color<br>"),jscolorInput(inputId = "colline4")),
@@ -504,14 +460,9 @@ function(request) {
                                         conditionalPanel(condition = "input.line4 > 0",
                                                          fluidRow(
                                                            column(width = 6, numericInput(inputId = "line5", strong("Line #5"), NA, min = 0)),
-                                                           column(width = 6, selectInput(inputId = "linelty5", label = "Line type",selected = 1,
-                                                                                         choices = list("Blank" = 0,
-                                                                                                        "Solid" = 1,
-                                                                                                        "Dashed" = 2,
-                                                                                                        "Dotted" = 3,
-                                                                                                        "Dot dash" = 4,
-                                                                                                        "Long dash" = 5,
-                                                                                                        "Two dash" = 6)))
+                                                           column(width = 6,
+                                                                  RLumShiny:::lineTypeChooser(inputId = "linelty5",
+                                                                                              selected = 1))
                                                          ),
                                                          fluidRow(
                                                            column(width = 6, HTML("Choose a color<br>"),jscolorInput(inputId = "colline5")),
@@ -521,14 +472,9 @@ function(request) {
                                         conditionalPanel(condition = "input.line5 > 0",
                                                          fluidRow(
                                                            column(width = 6, numericInput(inputId = "line6", strong("Line #6"), NA, min = 0)),
-                                                           column(width = 6, selectInput(inputId = "linelty6", label = "Line type",selected = 1,
-                                                                                         choices = list("Blank" = 0,
-                                                                                                        "Solid" = 1,
-                                                                                                        "Dashed" = 2,
-                                                                                                        "Dotted" = 3,
-                                                                                                        "Dot dash" = 4,
-                                                                                                        "Long dash" = 5,
-                                                                                                        "Two dash" = 6)))
+                                                           column(width = 6,
+                                                                  RLumShiny:::lineTypeChooser(inputId = "linelty6",
+                                                                                              selected = 1))
                                                          ),
                                                          fluidRow(
                                                            column(width = 6, HTML("Choose a color<br>"),jscolorInput(inputId = "colline6")),
@@ -538,14 +484,9 @@ function(request) {
                                         conditionalPanel(condition = "input.line6 > 0",
                                                          fluidRow(
                                                            column(width = 6, numericInput(inputId = "line7", strong("Line #7"), NA, min = 0)),
-                                                           column(width = 6, selectInput(inputId = "linelty7", label = "Line type",selected = 1,
-                                                                                         choices = list("Blank" = 0,
-                                                                                                        "Solid" = 1,
-                                                                                                        "Dashed" = 2,
-                                                                                                        "Dotted" = 3,
-                                                                                                        "Dot dash" = 4,
-                                                                                                        "Long dash" = 5,
-                                                                                                        "Two dash" = 6)))
+                                                           column(width = 6,
+                                                                  RLumShiny:::lineTypeChooser(inputId = "linelty7",
+                                                                                              selected = 1))
                                                          ),
                                                          fluidRow(
                                                            column(width = 6, HTML("Choose a color<br>"),jscolorInput(inputId = "colline7")),
@@ -555,14 +496,9 @@ function(request) {
                                         conditionalPanel(condition = "input.line7 > 0",
                                                          fluidRow(
                                                            column(width = 6, numericInput(inputId = "line8", strong("Line #8"), NA, min = 0)),
-                                                           column(width = 6, selectInput(inputId = "linelty8", label = "Line type",selected = 1,
-                                                                                         choices = list("Blank" = 0,
-                                                                                                        "Solid" = 1,
-                                                                                                        "Dashed" = 2,
-                                                                                                        "Dotted" = 3,
-                                                                                                        "Dot dash" = 4,
-                                                                                                        "Long dash" = 5,
-                                                                                                        "Two dash" = 6)))
+                                                           column(width = 6,
+                                                                  RLumShiny:::lineTypeChooser(inputId = "linelty8",
+                                                                                              selected = 1))
                                                          ),
                                                          fluidRow(
                                                            column(width = 6, HTML("Choose a color<br>"),jscolorInput(inputId = "colline8")),

@@ -154,27 +154,18 @@ function(request) {
                                                                   jscolorInput(inputId = "jscol1"))
                                           )
                                         ),
-                                        
+
                                         fluidRow(
                                           column(width = 6,
-                                                 selectInput(inputId = "lty", "Fitting line style",
-                                                             selected = 1,
-                                                             choices = list("Blank" = 0,
-                                                                            "Solid" = 1,
-                                                                            "Dashed" = 2,
-                                                                            "Dotted" = 3,
-                                                                            "Dot dash" = 4,
-                                                                            "Long dash" = 5,
-                                                                            "Two dash" = 6)) 
+                                                 RLumShiny:::lineTypeChooser(inputId = "lty",
+                                                                             label = "Fitting line style",
+                                                                             selected = 1)
                                           ),
                                           column(width = 6,
-                                                 numericInput(inputId = "lwd", 
-                                                              label = "Line width", 
-                                                              min = 0, max = 5, 
-                                                              value = 1)
+                                                 RLumShiny:::lineWidthChooser(inputId = "lwd")
                                           )
                                         ),
-                                        
+
                                         fluidRow(
                                           column(width = 6,
                                                  selectInput(inputId = "line_col", label = "Fitting line color",

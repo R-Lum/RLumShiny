@@ -42,8 +42,8 @@ function(input, output, session) {
       object = values$data_primary,
       fit.method = input$fit_method,
       mode = input$mode,
+      fit.weights = if (input$fit_weights == "none") NULL else input$fit_weights,
       fit.force_through_origin = input$force_through_origin,
-      fit.weights = input$fit_weights,
       verbose = FALSE)
 
     values$args.plot <- list(
@@ -51,7 +51,11 @@ function(input, output, session) {
       object = NULL, # will be set further down
       plot_extended = input$extended,
       density_rug = input$density_rug,
+      density_polygon = input$density_polygon,
       box = input$box,
+      lty_drc = as.integer(input$lty_drc),
+      lwd_drc = input$lwd_drc,
+      col_drc = ifelse(input$col_drc == "custom", input$jscol, input$col_drc),
       legend = input$showlegend,
       legend.pos = input$legend_pos,
       verbose = FALSE,

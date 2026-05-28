@@ -46,11 +46,15 @@ function(request) {
                                                                    "EXP+EXP" = "EXP+EXP",
                                                                    "OTOR" = "OTOR")),
 
+                                        selectInput(inputId = "fit_weights",
+                                                    "Fit weights",
+                                                    selected = "inverse_var",
+                                                    choices = list("Inverse variance" = "inverse_var",
+                                                                   "Inverse standard error" = "inverse_std",
+                                                                   "Normalised inverse standard error" = "norm_inverse_std",
+                                                                   "None" = "none")),
                                         checkboxInput(inputId = "force_through_origin",
                                                       label = "Force through origin",
-                                                      value = TRUE),
-                                        checkboxInput(inputId = "fit_weights",
-                                                      label = "Fit weights",
                                                       value = TRUE)
                                ),
 
@@ -59,15 +63,55 @@ function(request) {
                                         textInput(inputId = "main",
                                                   label = "Title",
                                                   value = "Dose Response Curve"),
-                                        checkboxInput(inputId = "extended",
-                                                      label = "Histogram and sensitivity plot",
-                                                      value = TRUE),
-                                        checkboxInput(inputId = "density_rug",
-                                                      label = "Density rug",
-                                                      value = TRUE),
-                                        checkboxInput(inputId = "box",
-                                                      label = "Box",
-                                                      value = TRUE),
+                                        fluidRow(
+                                            column(width = 6,
+                                                   checkboxInput(inputId = "extended",
+                                                                 label = "Histogram and sensitivity plot",
+                                                                 value = TRUE),
+                                                   checkboxInput(inputId = "box",
+                                                                 label = "Outer box",
+                                                                 value = TRUE)
+                                                   ),
+                                            column(width = 6,
+                                                   checkboxInput(inputId = "density_polygon",
+                                                                 label = "Density polygon",
+                                                                 value = TRUE),
+                                                   checkboxInput(inputId = "density_rug",
+                                                                 label = "Density rug",
+                                                                 value = TRUE)
+                                                   )
+                                        ),
+
+                                        br(),
+                                        div(align = "center", h5("Curve")),
+                                        fluidRow(
+                                          column(width = 6,
+                                                 RLumShiny:::lineTypeChooser(inputId = "lty_drc",
+                                                                             selected = 1)
+                                          ),
+                                          column(width = 6,
+                                                 RLumShiny:::lineWidthChooser(inputId = "lwd_drc")
+                                          )
+                                        ),
+                                        fluidRow(
+                                            column(width = 6,
+                                                   selectInput(inputId = "col_drc",
+                                                               label = "Colour",
+                                                               selected = "black",
+                                                               choices = list("Black" = "black",
+                                                                              "Grey" = "grey50",
+                                                                              "Red" = "#b22222",
+                                                                              "Green" = "#6E8B3D",
+                                                                              "Blue" = "#428bca",
+                                                                              "Custom" = "custom"))
+                                                   ),
+                                            column(width = 6,
+                                                   # show only if custom color is desired
+                                                   conditionalPanel(condition = "input.col_drc == 'custom'",
+                                                                    HTML("Choose a colour<br>"),
+                                                                    jscolorInput(inputId = "jscol"))
+                                                   )
+                                        ),
 
                                         br(),
                                         div(align = "center", h5("Axes")),

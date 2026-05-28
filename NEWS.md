@@ -8,6 +8,8 @@
     entire plot in a separate window.
   - Show the ui elements regarding the secondary dataset only when the
     corresponding data is present.
+  - Fix crash occurring when the custom percentile range was a
+    single-digit value (#110).
 - App `doserecovery`:
   - Show the ui elements regarding the secondary dataset only when the
     corresponding data is present.

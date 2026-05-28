@@ -42,8 +42,8 @@ function(input, output, session) {
       object = values$data_primary,
       fit.method = input$fit_method,
       mode = input$mode,
+      fit.weights = if (input$fit_weights == "none") NULL else input$fit_weights,
       fit.force_through_origin = input$force_through_origin,
-      fit.weights = input$fit_weights,
       verbose = FALSE)
 
     values$args.plot <- list(

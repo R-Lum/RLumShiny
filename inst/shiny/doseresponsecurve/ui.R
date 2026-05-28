@@ -46,11 +46,15 @@ function(request) {
                                                                    "EXP+EXP" = "EXP+EXP",
                                                                    "OTOR" = "OTOR")),
 
+                                        selectInput(inputId = "fit_weights",
+                                                    "Fit weights",
+                                                    selected = "inverse_var",
+                                                    choices = list("Inverse variance" = "inverse_var",
+                                                                   "Inverse standard error" = "inverse_std",
+                                                                   "Normalised inverse standard error" = "norm_inverse_std",
+                                                                   "None" = "none")),
                                         checkboxInput(inputId = "force_through_origin",
                                                       label = "Force through origin",
-                                                      value = TRUE),
-                                        checkboxInput(inputId = "fit_weights",
-                                                      label = "Fit weights",
                                                       value = TRUE)
                                ),
 

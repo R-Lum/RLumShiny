@@ -329,16 +329,12 @@ function(request) {
                                         div(align = "center", h5("Central line")),
                                         fluidRow(
                                           column(width = 6,
-                                                 numericInput(inputId = "lwd",
-                                                              label = "Central line width #1",
-                                                              min = 0, max = 5,
-                                                              value = 1)
+                                                 RLumShiny:::lineWidthChooser(inputId = "lwd",
+                                                                              label = "Central line width #1")
                                           ),
                                           column(width = 6,
-                                                 numericInput(inputId = "lwd2",
-                                                              label = "Central line width #2",
-                                                              min = 0, max = 5,
-                                                              value = 1)
+                                                 RLumShiny:::lineWidthChooser(inputId = "lwd2",
+                                                                              label = "Central line width #2")
                                           )
                                         ),
                                         fluidRow(

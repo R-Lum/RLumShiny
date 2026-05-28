@@ -46,6 +46,16 @@ lineTypeChooser <- function(inputId, selected, label = "Line type") {
                              "Two dash" = 6))
 }
 
+#' Internal helper function to choose the line width
+#'
+#' @noRd
+lineWidthChooser <- function(inputId, label = "Line width") {
+  numericInput(inputId = inputId,
+               label = label,
+               value = 1,
+               min = 0, max = 5, step = 0.5)
+}
+
 #' Internal helper function to choose a custom symbol
 #'
 #' @noRd

@@ -220,16 +220,12 @@ function(request) {
 
                                         fluidRow(
                                           column(width = 6,
-                                                 numericInput(inputId = "lwd",
-                                                              label = "Line width #1",
-                                                              min = 0, max = 5,
-                                                              value = 1)
+                                                 RLumShiny:::lineWidthChooser(inputId = "lwd",
+                                                                              label = "Line width #1")
                                           ),
                                           column(width = 6,
-                                                 numericInput(inputId = "lwd2",
-                                                              label = "Line width #2",
-                                                              min = 0, max = 5,
-                                                              value = 1)
+                                                 RLumShiny:::lineWidthChooser(inputId = "lwd2",
+                                                                              label = "Line width #2")
                                           )
                                         ),
                                         fluidRow(

@@ -162,13 +162,10 @@ function(request) {
                                                                              selected = 1)
                                           ),
                                           column(width = 6,
-                                                 numericInput(inputId = "lwd", 
-                                                              label = "Line width", 
-                                                              min = 0, max = 5, 
-                                                              value = 1)
+                                                 RLumShiny:::lineWidthChooser(inputId = "lwd")
                                           )
                                         ),
-                                        
+
                                         fluidRow(
                                           column(width = 6,
                                                  selectInput(inputId = "line_col", label = "Fitting line color",

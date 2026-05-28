@@ -90,7 +90,7 @@ printCode <- function(input, output, session, ...,
       arg <- deparse(arg)
     if (length(arg) > 1) {
       ## use the range notation when possible
-      if (is.numeric(arg) && identical(arg, seq(min(arg), max(arg))))
+      if (is.numeric(arg) && !anyNA(arg) && identical(arg, seq(min(arg), max(arg))))
         arg <- paste(range(arg), collapse = ":")
       else
         arg <- paste0("c(", paste(arg, collapse = ", "), ")")

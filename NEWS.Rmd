@@ -16,6 +16,10 @@ output: github_document
   + Show the ui elements regarding the secondary dataset only when the
     corresponding data is present.
 
+* App `doseresponsecurve`:
+  + Add support to customise line type, width and colour of the dose-response
+    curve.
+
 * App `filter`:
   + Add support for interactive mode via the `plotly` package.
 

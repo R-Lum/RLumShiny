@@ -83,6 +83,37 @@ function(request) {
                                         ),
 
                                         br(),
+                                        div(align = "center", h5("Curve")),
+                                        fluidRow(
+                                          column(width = 6,
+                                                 RLumShiny:::lineTypeChooser(inputId = "lty_drc",
+                                                                             selected = 1)
+                                          ),
+                                          column(width = 6,
+                                                 RLumShiny:::lineWidthChooser(inputId = "lwd_drc")
+                                          )
+                                        ),
+                                        fluidRow(
+                                            column(width = 6,
+                                                   selectInput(inputId = "col_drc",
+                                                               label = "Colour",
+                                                               selected = "black",
+                                                               choices = list("Black" = "black",
+                                                                              "Grey" = "grey50",
+                                                                              "Red" = "#b22222",
+                                                                              "Green" = "#6E8B3D",
+                                                                              "Blue" = "#428bca",
+                                                                              "Custom" = "custom"))
+                                                   ),
+                                            column(width = 6,
+                                                   # show only if custom color is desired
+                                                   conditionalPanel(condition = "input.col_drc == 'custom'",
+                                                                    HTML("Choose a colour<br>"),
+                                                                    jscolorInput(inputId = "jscol"))
+                                                   )
+                                        ),
+
+                                        br(),
                                         div(align = "center", h5("Axes")),
                                         textInput(inputId = "xlab",
                                                   label = "Label x-axis",
